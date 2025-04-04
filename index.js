@@ -55,20 +55,20 @@ function atm() {
                 break;
             case 2:
                 // console.log("inside case 2");
-                let depositAmount = parseFloat(prompt("Enter amount to deposit:"));
-                if (depositAmount) {
-                    deposit(depositAmount);
+                let depositAmount = prompt("Enter amount to deposit:");
+                if (!isNaN(depositAmount)) {
+                    deposit(parseFloat(depositAmount));
                 } else {
-                    accountError("Enter correct amount to deposit!!!");
+                    accountError("Enter amount to deposit in Numeric!!!");
                 }
                 break;
             case 3:
                 // console.log("inside case 3");
-                let withdrawAmount = parseFloat(prompt("Enter amount to withdraw:"));
-                if (withdrawAmount) {
-                    withdraw(withdrawAmount);
+                let withdrawAmount = prompt("Enter amount to withdraw:");
+                if (!isNaN(withdrawAmount)) {
+                    withdraw(parseFloat(withdrawAmount));
                 } else {
-                    accountError("Enter correct amount to withdraw!!!");
+                    accountError("Enter amount to withdraw in Numeric!!!");
                 }
                 break;
             case 4:
