@@ -1,47 +1,53 @@
+// *********** FUNCTIONS ****************
+// Function to display balance
 function getBalance() {
-
     console.log("Account Balance:", bankaccount.balance);
 }
 
-function getAccountName() {
-    console.log("Account Name:", bankaccount.name);
-}
-
-function accountError(errMessage) {
-    console.log("Error !!", errMessage);
-}
-
+// Function to deposit amount
 function deposit(amount) {
     bankaccount.balance += amount;
     console.log("Deposited amount", amount);
     getBalance();
 }
 
-function exitAccount() {
-    return true;
-}
-
+// Function to withdraw amount
 function withdraw(amount) {
     if (amount > bankaccount.balance) {
-        accountError("Not enough funds in account!");
+        accountError("Not enough funds in account!!!");
         //console.log("Not enough funds");
     } else {
         bankaccount.balance = bankaccount.balance - amount;
-        console.log("Withdraw ", amount, " Successful");
+        console.log("Withdraw ", amount, " Successful.");
         getBalance();
     }
 }
 
+// Function to display account name
+function getAccountName() {
+    console.log("Account Name:", bankaccount.name);
+}
 
+// Function to display error message
+function accountError(errMessage) {
+    console.log("Error !!", errMessage);
+    alert(`Error!!!\n${errMessage}`);
+}
+
+// Function to exit amt function
+function exitAccount() {
+    return true;
+}
+
+// ATM function
 function atm() {
     let exitatm = false;
     while (!exitatm) {
         const message = parseFloat(
             prompt(
-                "select a choice 1.) see balance 2.) Make a deposit 3.) Make a withdrawl 4.) get account name 5.) Exit"
+                "Select a choice: \n 1) Check balance \n 2) Make a deposit \n 3) Make a withdrawl \n 4) Get account name \n 5) Exit"
             )
         );
-        console.log("Entered Choice: ", message);
         switch (message) {
             case 1:
                 // console.log("inside case 1");
@@ -53,7 +59,7 @@ function atm() {
                 if (depositAmount) {
                     deposit(depositAmount);
                 } else {
-                    accountError("Enter correct amount to deposit!");
+                    accountError("Enter correct amount to deposit!!!");
                 }
                 break;
             case 3:
@@ -62,7 +68,7 @@ function atm() {
                 if (withdrawAmount) {
                     withdraw(withdrawAmount);
                 } else {
-                    accountError("Enter correct amount to withdraw!");
+                    accountError("Enter correct amount to withdraw!!!");
                 }
                 break;
             case 4:
@@ -71,17 +77,23 @@ function atm() {
                 break;
             case 5:
                 // console.log("inside case 5");
-                exitatm= exitAccount();
+                console.log("Exiting!!!");
+                exitatm = exitAccount();
                 break;
             default:
                 // console.log("inside default");
+                accountError("Enter correct choice (1-5) !!!");
                 break;
         }
     }
 }
 
 
-let bankaccount = { name: "MyName", balance: 600 };
+// *********** Main ****************
+// setting name and minimum balace for the account
+let bankaccount = { name: "MyName", balance: 10 };
 
+// calling ATM function
 atm();
+
 
